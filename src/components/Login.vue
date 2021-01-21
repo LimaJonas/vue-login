@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Login</h2>
-        <form action method>
+        <form action method @submit="submitLogin">
             <input
                 v-model="email"
                 type="text"
@@ -16,15 +16,13 @@
                 placeholder="password"
             />
 
-          <button type="submit" class="btn btn-primary btn-block mt-4">
+          <button class="btn btn-primary btn-block mt-4">
             <span
               v-if="loading"
               class="spinner-border spinner-border-sm"
               role="status"
               aria-hidden="true"
-            >
-              <span class="sr-only">Carregando...</span>
-            </span>
+            >Carregando...</span>
             <span v-else>Login</span>
           </button>
 
@@ -41,6 +39,7 @@
 </template>
 
 <script>
+import { login } from "@/services/AuthService";
 export default {
     name: "Login",
     data() {
@@ -49,6 +48,19 @@ export default {
             password: null,
             loading: null,
         };
-    }
+    },
+    methods: {
+    async submitLogin() {
+      this.loading = true;
+      await login(this.email, this.password)
+        .then(() => {
+            this.$router.push({ name: "Home" });
+        })
+        .catch(() => {
+            console.log("Error")
+        });
+      this.loading = false;
+    },
+  },
 }
 </script>
