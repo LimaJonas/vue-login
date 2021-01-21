@@ -1,7 +1,19 @@
 <template>
     <div>
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form action method>
+            <input
+                v-model="firstName"
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+            />
+            <input
+                v-model="lastName"
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
+            />
             <input
                 v-model="email"
                 type="text"
@@ -25,15 +37,15 @@
             >
               <span class="sr-only">Carregando...</span>
             </span>
-            <span v-else>Login</span>
+            <span v-else>Register</span>
           </button>
 
           <router-link
             tag="button"
             class="btn btn-success btn-block mt-3"
-            :to="{ name: 'Register' }"
+            :to="{ name: 'Login' }"
           >
-            Register
+            Go back
           </router-link>
         </form>
 
@@ -42,9 +54,11 @@
 
 <script>
 export default {
-    name: "Login",
+    name: "Register",
     data() {
         return {
+            firstName: null,
+            lastName: null,
             email: null,
             password: null,
             loading: null,
