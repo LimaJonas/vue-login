@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Backend
+
+you can use this simple backend for login and registration
+
+[Repository](https://github.com/LimaJonas/Node_AuthAPI)
